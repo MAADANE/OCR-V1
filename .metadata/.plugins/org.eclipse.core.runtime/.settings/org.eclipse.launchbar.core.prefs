@@ -1,0 +1,13 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:LoadJAXP,org.eclipse.launchbar.core.descriptorType.default\:Test,org.eclipse.launchbar.core.descriptorType.default\:ImageResizer,org.eclipse.launchbar.core.descriptorType.default\:ResizeImageExample,org.eclipse.launchbar.core.descriptorType.default\:InterOCR
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:ImageResizer/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:ImageResizer/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:InterOCR/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:InterOCR/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:LoadJAXP/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:LoadJAXP/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:Test/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:Test/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

@@ -1,0 +1,36 @@
+package traitement;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+public class ImageResizer {
+
+    public static void resize(String inputImagePath,String outputImagePath)
+            throws IOException {
+        // reads input image
+        File inputFile = new File(inputImagePath);
+        BufferedImage inputImage = ImageIO.read(inputFile);
+        
+        //extract inputImage Width and Height
+        int scaledWidth = (int) (inputImage.getWidth() * 1.5);
+        int scaledHeight = (int) (inputImage.getHeight() * 1.5);
+        
+        // creates output image
+        BufferedImage outputImage = new BufferedImage(scaledWidth,scaledHeight, inputImage.getType());
+        
+        // scales the input image to the output image
+        Graphics2D g2d = outputImage.createGraphics();
+        g2d.drawImage(inputImage, 0, 0, scaledWidth, scaledHeight, null);
+        g2d.dispose();
+ 
+        // extracts extension of output file
+        String formatName = inputImagePath.substring(inputImagePath.lastIndexOf(".") + 1);
+ 
+        // writes to output file
+        ImageIO.write(outputImage, formatName, new File(outputImagePath));
+    }
+}
