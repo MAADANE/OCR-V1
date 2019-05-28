@@ -3,21 +3,13 @@ import java.awt.BorderLayout;
 
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageOutputStream;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -29,10 +21,10 @@ import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import Traitement.ImageResizer;
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
-import traitement.ImageResizer;
 
 
 public class InterOCR extends JFrame implements ActionListener{
@@ -95,19 +87,19 @@ public class InterOCR extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getActionCommand().equals("Upload File")) {
-			  /*  jFC.setAcceptAllFileFilterUsed(false);
+			 jFC.setAcceptAllFileFilterUsed(false);
 		        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", new String[] { "JPG", "JPEG","PNG" });
-		        jFC.addChoosableFileFilter(filter);*/
+		        jFC.addChoosableFileFilter(filter);
 		        jFC.showOpenDialog(null);
 				tfu.setText(jFC.getSelectedFile().getAbsolutePath());
 		}
 		if(e.getActionCommand().equals("Download File")) {
 			String result =list.getSelectedItem().toString();
 			String path=tfu.getText();
-			File imageFile =new File(path);
+			//File imageFile =new File(tfu.getText());
 			ITesseract instance = new Tesseract();
-			instance.setDatapath("D:\\ENSAO\\PFA-master\\Tess4J\\tessdata");
-			/*ImageResizer im=new ImageResizer();
+			instance.setDatapath("D:\\PFA\\Tess4J\\tessdata");
+			ImageResizer im=new ImageResizer();
 			File inputFile= new File(path);
 			File outputFile=new File("image2.png");
 			try {
@@ -115,26 +107,12 @@ public class InterOCR extends JFrame implements ActionListener{
 			} catch (IOException e2) {
 				// TODO Auto-generated catch block
 				e2.printStackTrace();
-			}*/
+			}
 			if(result.equals("French") && !tfd.getText().isEmpty()) {
 				System.out.println(tfu.getText());
 				try {
 					instance.setLanguage("fr/fra");
-					//File ff=new File("hello1.png");
-					/*BufferedImage inputImage = ImageIO.read(imageFile);
-					Image icon = new ImageIcon(path).getImage();
-					int scaledWidth = (int) (inputImage.getWidth() * 1.5);
-			        int scaledHeight = (int) (inputImage.getHeight() * 1.5);
-					icon.getScaledInstance(scaledWidth,scaledHeight, Image.SCALE_SMOOTH);
-					BufferedImage bufferedImage = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_ARGB);
-					Graphics2D g = bufferedImage.createGraphics();
-				    g.drawImage(icon, 0, 0,scaledWidth,scaledHeight, null);
-				    g.dispose();
-					ImageIO.write(bufferedImage, "png", ff);*/
-					
-					//System.out.print(imageFile);
-					//String resultt = instance.doOCR(outputFile);
-					String resultt=instance.doOCR(imageFile);
+					String resultt = instance.doOCR(outputFile);
 					FileWriter file=new FileWriter("D:\\ENSAO\\"+tfd.getText());  
 		            file.write(resultt);
 		            file.close();
@@ -150,8 +128,8 @@ public class InterOCR extends JFrame implements ActionListener{
 				System.out.println(tfu.getText());
 				try {
 					instance.setLanguage("en/eng");
-					//String resultt = instance.doOCR(outputFile);
-					String resultt=instance.doOCR(imageFile);
+					String resultt = instance.doOCR(outputFile);
+					
 					FileWriter file=new FileWriter("D:\\ENSAO\\"+tfd.getText());  
 		            file.write(resultt);
 		            file.close();
@@ -166,4 +144,7 @@ public class InterOCR extends JFrame implements ActionListener{
 		}
 		
 	}
+
+
+	
 }
